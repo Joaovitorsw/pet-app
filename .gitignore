@@ -7,6 +7,7 @@
 /bazel-out
 .vscode
 .angulardoc.json
+package-lock.json
 # Node
 /node_modules
 npm-debug.log
