@@ -114,10 +114,11 @@ image-cropper {
     500ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
 }
 router-outlet + * {
+  padding-top: 85px;
   @media screen and (min-width: 700px) {
     padding: 0 10px;
+    padding-top: 85px;
   }
-  padding-top: 85px;
 }
 .role-dialog-container {
   mat-form-field {
