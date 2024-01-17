@@ -21,7 +21,7 @@ export class LoaderService {
     if (this.apiCount === 0) {
       setTimeout(() => {
         this.isLoadingSubject.next(false);
-      }, 500);
+      }, 750);
     }
   }
 }
