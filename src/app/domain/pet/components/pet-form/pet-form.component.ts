@@ -108,7 +108,7 @@ export class PetFormComponent implements OnInit {
       this.matDialog.open(this.cropContainer);
     } else {
       this.notificationService.showSnackBarError({
-        message: 'Please select an image',
+        message: 'Selecione uma imagem',
       });
     }
   }
@@ -131,7 +131,7 @@ export class PetFormComponent implements OnInit {
 
     if (this.isInvalideFileLength) {
       this.notificationService.showSnackBarError({
-        message: `File size should be less than ${this.maxSize}KB`,
+        message: `O tamanho do arquivo deve ser menor que ${this.maxSize}KB`,
       });
     }
   }
@@ -168,7 +168,7 @@ export class PetFormComponent implements OnInit {
   async saveImage() {
     if (!this.file || !this.event.blob) {
       this.notificationService.showSnackBarError({
-        message: 'Please select an image',
+        message: 'Selecione uma imagem',
       });
       return;
     }

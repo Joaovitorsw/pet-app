@@ -1,7 +1,13 @@
 <mat-toolbar color="primary" *ngIf="authService.hasUser">
   <div class="toolbar-group">
-    <img src="../assets/logo.png" alt="logo" />
-    <span>Pet Application</span>
+    <div
+      class="title"
+      matTooltip="Animais de estimação"
+      [routerLink]="['home/pets']"
+    >
+      <img src="../assets/logo.png" alt="logo" />
+      <span>Pet Application</span>
+    </div>
     <mat-icon
       *ngIf="isPetPage"
       [matTooltip]="
@@ -17,13 +23,6 @@
     </mat-icon>
   </div>
   <div class="routes">
-    <mat-icon
-      matTooltip="Animais de estimação
-"
-      [routerLink]="['home/pets']"
-      routerLinkActive="active"
-      >pets</mat-icon
-    >
     <mat-icon
       [routerLink]="['home/roles']"
       routerLinkActive="active"

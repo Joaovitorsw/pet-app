@@ -41,10 +41,12 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
-
-    mat-form-field:nth-child(2) {
-      max-width: 150px;
+    @media screen and (min-width: 600px) {
+      mat-form-field:nth-child(2) {
+        max-width: 150px;
+      }
     }
+
     gap: 20px;
   }
   mat-expansion-panel-header {

@@ -2,7 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  @media screen and (max-width: 600px) {
+    padding-top: 0 !important;
+  }
   form {
     background-color: white;
     display: flex;
