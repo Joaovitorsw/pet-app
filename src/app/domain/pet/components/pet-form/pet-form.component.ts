@@ -31,7 +31,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { MaterialFileInputModule } from 'ngx-custom-material-file-input';
 import { ImageCroppedEvent, ImageCropperModule } from 'ngx-image-cropper';
 import { Observable } from 'rxjs';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2';
 import { FADE_ANIMATION } from '../../../../shared/animations/fade';
 import { NotificationService } from '../../../../shared/services/notification/notification.service';
 import { BINARY_MULTIPLES } from '../../constants/binary';

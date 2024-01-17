@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 
 @Injectable({
@@ -33,6 +33,10 @@ export class NotificationService {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
+      customClass: {
+        confirmButton:
+          'mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base',
+      },
       html: message,
     });
   }
