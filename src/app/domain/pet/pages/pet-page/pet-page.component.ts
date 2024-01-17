@@ -90,8 +90,28 @@ export class PetPageComponent implements OnInit, AfterViewInit, OnDestroy {
   owners: WritableSignal<Owner[]> = signal([]);
   pets: WritableSignal<Pet[]> = signal([]);
 
-  sortOptions = ['id', 'name', 'birthDate', 'updatedAt', 'createdAt'];
-
+  sortOptions = [
+    {
+      value: 'id',
+      label: 'Id',
+    },
+    {
+      value: 'name',
+      label: 'Nome',
+    },
+    {
+      value: 'birthDate',
+      label: 'Data de nascimento',
+    },
+    {
+      value: 'updatedAt',
+      label: 'Data de atualização',
+    },
+    {
+      value: 'createdAt',
+      label: 'Data de criação',
+    },
+  ];
   sort = new FormControl('id');
   direction = new FormControl('asc');
   changeDetectorRef = inject(ChangeDetectorRef);

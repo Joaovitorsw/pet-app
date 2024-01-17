@@ -1,4 +1,26 @@
 :host {
+  .pet-info {
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: 1em;
+    span {
+      margin-right: 4px;
+      font-weight: 500;
+      color: var(--mat-expansion-header-text-color);
+    }
+    p {
+      font-weight: 400;
+      margin: 0;
+    }
+  }
+  b {
+    color: black;
+  }
+  .mat-mdc-card-content {
+    display: flex;
+    flex-direction: column;
+  }
   mat-card-header {
     display: flex;
     flex-direction: column;
@@ -7,6 +29,7 @@
     mat-card {
       margin-bottom: 10px;
     }
+
     .button-group {
       display: flex;
       gap: 10px;

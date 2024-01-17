@@ -4,7 +4,9 @@
     <mat-icon
       *ngIf="isPetPage"
       [matTooltip]="
-        petService.search$$.value ? 'Hidden page options' : 'Open page options'
+        petService.search$$.value
+          ? 'Opções da página oculta'
+          : 'Opções da página aberta'
       "
       [class.text-success]="petService.search$$.value"
       [class.text-danger]="!petService.search$$.value"
@@ -15,7 +17,8 @@
   </div>
   <div class="routes">
     <mat-icon
-      matTooltip="Pet Page"
+      matTooltip="Animais de estimação
+"
       [routerLink]="['home/pets']"
       routerLinkActive="active"
       >pets</mat-icon
@@ -23,14 +26,16 @@
     <mat-icon
       [routerLink]="['home/roles']"
       routerLinkActive="active"
-      matTooltip="Roles Page"
+      matTooltip="Funções
+"
       >group</mat-icon
     >
     <mat-icon
       [routerLink]="['/sign-in']"
       (click)="authService.logout()"
       routerLinkActive="active"
-      matTooltip="Sign In Page"
+      matTooltip="Login
+"
       >logout</mat-icon
     >
   </div>

@@ -1,19 +1,27 @@
 <form [formGroup]="formGroup">
   <div class="text">
-    <h1>Sign up</h1>
-    <span>Welcome to Pet App! Please register to your account. </span>
+    <h1>Inscrever-se</h1>
+    <span>Bem-vindo ao Pet App! Por favor, registre-se em sua conta. </span>
   </div>
   <mat-form-field appearance="outline" floatLabel="always">
-    <mat-label>Username</mat-label>
-    <input formControlName="username" placeholder="Type pet name" matInput />
+    <mat-label>Nome de usuário </mat-label>
+    <input
+      formControlName="username"
+      placeholder="Digite seu nome de usuário"
+      matInput
+    />
   </mat-form-field>
   <mat-form-field appearance="outline" floatLabel="always">
     <mat-label>Email</mat-label>
-    <input formControlName="email" placeholder="Type pet name" matInput />
+    <input formControlName="email" placeholder="Digite seu email" matInput />
   </mat-form-field>
   <mat-form-field appearance="outline" floatLabel="always">
-    <mat-label>Choose a role</mat-label>
-    <mat-select formControlName="role" placeholder="Select a option">
+    <mat-label>Função</mat-label>
+    <mat-select
+      formControlName="role"
+      placeholder="Selecione uma opção
+"
+    >
       @for (role of roles(); track role.id) {
       <mat-option [value]="+role.id">
         {{ role.name }}
@@ -22,7 +30,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline" floatLabel="always">
-    <mat-label>Password</mat-label>
+    <mat-label>Senha</mat-label>
     <mat-icon
       (click)="
         passwordField.type =
@@ -37,16 +45,17 @@
       formControlName="password"
       type="password"
       #passwordField
-      placeholder="Type pet name"
+      placeholder="Digite sua senha"
       matInput
     />
   </mat-form-field>
   <button mat-raised-button color="primary" (click)="onSubmit()">
-    Sing Up
+    Registrar
   </button>
   <span class="sing-up">
     <span
-      >Already have an account? <a [routerLink]="['/sign-in']"> Sign in</a>
+      >Já tem uma conta?
+      <a [routerLink]="['/sign-in']"> Entrar</a>
     </span>
   </span>
 </form>

@@ -15,6 +15,12 @@ export class AgePipe implements PipeTransform {
     const durationInWords = formatDuration(duration, {
       format: ['years', 'months', 'days'],
     });
-    return durationInWords || '0';
+    return (durationInWords || '0')
+      .replace('year', 'ano')
+      .replace('years', 'anos')
+      .replace('months', 'meses')
+      .replace('month', 'mes')
+      .replace('days', 'dias')
+      .replace('day', 'dia');
   }
 }

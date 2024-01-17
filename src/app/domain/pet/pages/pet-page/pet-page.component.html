@@ -1,10 +1,13 @@
 <main #main>
   <mat-accordion [class.hidden]="!(petService.search$$ | async)">
     <mat-expansion-panel #formPanel [expanded]="step() === eStep.PetForm">
-      <mat-expansion-panel-header>
-        <mat-panel-title> <mat-icon>pets</mat-icon> Pet </mat-panel-title>
+      <mat-expansion-panel-header class="pet-header">
+        <mat-panel-title>
+          <mat-icon>pets</mat-icon>
+          <span class="panel-title"> Animal de estimação </span>
+        </mat-panel-title>
         <mat-panel-description>
-          Create or update your pet information's
+          Crie ou atualize as informações do seu animal de estimação
         </mat-panel-description> </mat-expansion-panel-header
       ><mat-divider></mat-divider>
       <app-pet-form
@@ -19,24 +22,26 @@
           color="primary"
           (click)="petForm.resetPetForm()"
         >
-          Clear <mat-icon>delete</mat-icon>
+          Limpar <mat-icon>delete</mat-icon>
         </button>
-        <button mat-stroked-button color="primary" (click)="formPanel.close()">
-          Close <mat-icon>close</mat-icon>
+        <button mat-stroked-button color="warn" (click)="formPanel.close()">
+          Fechar <mat-icon>close</mat-icon>
         </button>
         <button mat-raised-button color="primary" (click)="petForm.onSubmit()">
-          Save <mat-icon>save</mat-icon>
+          Salvar <mat-icon>save</mat-icon>
         </button>
       </mat-action-row>
     </mat-expansion-panel>
     <mat-expansion-panel #searchPanel [expanded]="step() === eStep.PetList">
       <mat-expansion-panel-header>
-        <mat-panel-title> <mat-icon>search</mat-icon> Search</mat-panel-title>
+        <mat-panel-title>
+          <mat-icon>search</mat-icon>
+          <span class="panel-title"> Procurar </span>
+        </mat-panel-title>
         <mat-panel-description>
-          Search a pet for information's
+          Procure informações sobre um animal de estimação
         </mat-panel-description>
       </mat-expansion-panel-header>
-      @defer (when searchPanel.expanded) {
       <app-search-pet-form [owners]="owners"></app-search-pet-form>
       <mat-action-row>
         <button
@@ -44,21 +49,16 @@
           color="primary"
           (click)="searchPetForm.formGroup.reset()"
         >
-          Clear <mat-icon>delete</mat-icon>
+          Limpar <mat-icon>delete</mat-icon>
         </button>
-        <button
-          mat-stroked-button
-          color="primary"
-          (click)="searchPanel.close()"
-        >
-          Close <mat-icon>close</mat-icon>
+        <button mat-stroked-button color="warn" (click)="searchPanel.close()">
+          Fechar <mat-icon>close</mat-icon>
         </button>
 
         <button mat-raised-button color="primary" (click)="searchData()">
-          Find <mat-icon>search</mat-icon>
+          Buscar <mat-icon>search</mat-icon>
         </button>
       </mat-action-row>
-      }
     </mat-expansion-panel>
     <mat-expansion-panel
       class="mat-expansion-panel-no-padding"
@@ -79,11 +79,15 @@
             appearance="outline"
             floatLabel="always"
           >
-            <mat-label>Sort by</mat-label>
-            <mat-select [formControl]="sort" placeholder="Select a option">
+            <mat-label>Ordenar por </mat-label>
+            <mat-select
+              [formControl]="sort"
+              placeholder="Selecione uma opção
+"
+            >
               @for (option of sortOptions; track option) {
-              <mat-option [value]="option">
-                {{ option }}
+              <mat-option [value]="option.value">
+                {{ option.label }}
               </mat-option>
               }
             </mat-select>
@@ -93,10 +97,14 @@
             appearance="outline"
             floatLabel="always"
           >
-            <mat-label> Direction</mat-label>
-            <mat-select [formControl]="direction" placeholder="Select a option">
-              <mat-option value="asc">ASC</mat-option>
-              <mat-option value="desc">DESC</mat-option>
+            <mat-label> Direção</mat-label>
+            <mat-select
+              [formControl]="direction"
+              placeholder="Selecione uma opção
+"
+            >
+              <mat-option value="asc">Ascendente</mat-option>
+              <mat-option value="desc">Descendente</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

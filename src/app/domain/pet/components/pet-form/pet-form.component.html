@@ -8,13 +8,21 @@
   </div>
   <form class="pet-form" [formGroup]="formGroup">
     <mat-form-field appearance="outline" floatLabel="always">
-      <mat-label>Name</mat-label>
-      <input formControlName="name" placeholder="Type pet name" matInput />
+      <mat-label>Nome</mat-label>
+      <input
+        formControlName="name"
+        placeholder="Digite o nome do animal de estimação"
+        matInput
+      />
     </mat-form-field>
 
     <mat-form-field appearance="outline" floatLabel="always">
       <mat-label>Choose a owner</mat-label>
-      <mat-select formControlName="owner" placeholder="Select a option">
+      <mat-select
+        formControlName="owner"
+        placeholder="Selecione uma opção
+"
+      >
         @for (owner of owners(); track owner.id) {
         <mat-option [value]="+owner.id">
           {{ owner.username }}
@@ -23,26 +31,26 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline" floatLabel="always">
-      <mat-label>Photo</mat-label>
+      <mat-label>Foto</mat-label>
       <ngx-mat-file-input
         #fileInput
-        [valuePlaceholder]="file?.name ?? 'No file selected'"
-        placeholder="Choose file"
+        [valuePlaceholder]="file?.name ?? 'Nenhum arquivo selecionado'"
+        placeholder="Escolher arquivo"
         formControlName="photoUrl"
         (change)="fileChangeEvent($event)"
       ></ngx-mat-file-input>
     </mat-form-field>
     <mat-form-field appearance="outline" floatLabel="always">
-      <mat-label>Birth Date</mat-label>
+      <mat-label>Data de nascimento </mat-label>
       <input
         matInput
-        placeholder="Choose a date"
+        placeholder="Escolha uma data"
         formControlName="birthDate"
         [max]="dateNow"
         [matDatepicker]="picker"
         (click)="picker.open()"
       />
-      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-hint>DD/MM/YYYY</mat-hint>
       <mat-datepicker-toggle
         matIconSuffix
         [for]="picker"
@@ -69,7 +77,7 @@
     [class.text-danger]="isInvalideFileLength"
     [class.text-success]="!isInvalideFileLength"
   >
-    Max size:
+    Tamanho máximo :
     {{ size }}{{ size | fileSize }}/
     <span [class.bold]="isInvalideFileLength"
       >{{ maxSize }} {{ maxSize | fileSize }}</span
@@ -85,7 +93,7 @@
       mat-dialog-close
       (click)="saveImage()"
     >
-      Save <mat-icon>save</mat-icon>
+      Salvar <mat-icon>save</mat-icon>
     </button>
   </div>
 </ng-template>

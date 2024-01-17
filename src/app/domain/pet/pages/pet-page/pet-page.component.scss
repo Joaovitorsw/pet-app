@@ -6,6 +6,9 @@
   }
   transition: padding-top 0.5s ease-out;
 
+  .panel-title {
+    margin-left: 8px;
+  }
   mat-accordion {
     position: fixed;
     top: 65px;
@@ -36,11 +39,9 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
-    mat-form-field:nth-child(1) {
-      max-width: 220px;
-    }
+
     mat-form-field:nth-child(2) {
-      max-width: 120px;
+      max-width: 150px;
     }
     gap: 20px;
   }
@@ -48,5 +49,81 @@
     padding-top: 15px;
     padding-bottom: 15px;
     height: 100%;
+
+    @media screen and (max-width: 600px) {
+      &.pet-header mat-icon {
+        padding-right: 16px;
+      }
+      &:not(.pet-header) mat-icon {
+        padding-right: 8px;
+      }
+    }
+  }
+  ::ng-deep {
+    .mat-expansion-panel-no-padding {
+      mat-expansion-panel-header {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      .mat-content {
+        display: grid;
+        grid-template-columns: 1fr 21vw;
+
+        @media screen and (max-width: 600px) {
+          display: flex;
+          flex-direction: column;
+        }
+        align-items: center;
+      }
+      .mat-form-field-sort {
+        height: 25px;
+        .mat-mdc-text-field-wrapper {
+          min-height: 36px;
+        }
+        .mdc-text-field--no-label:not(.mdc-text-field--textarea)
+          .mat-mdc-form-field-input-control.mdc-text-field__input,
+        .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+          min-height: 36px;
+        }
+        .mat-mdc-text-field-wrapper.mdc-text-field--outlined
+          .mat-mdc-form-field-infix {
+          padding-top: 6px !important;
+          padding-bottom: 0px !important;
+          display: flex;
+        }
+
+        .mat-mdc-form-field-infix {
+          min-height: 13px !important;
+        }
+        .mat-form-field-infix {
+          border: 0;
+          height: 36px;
+        }
+      }
+      .mat-mdc-paginator-page-size {
+        .mat-mdc-text-field-wrapper {
+          min-height: 15px;
+        }
+        .mdc-text-field--no-label:not(.mdc-text-field--textarea)
+          .mat-mdc-form-field-input-control.mdc-text-field__input,
+        .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+          min-height: 15px;
+        }
+        .mat-mdc-text-field-wrapper.mdc-text-field--outlined
+          .mat-mdc-form-field-infix {
+          padding-top: 2px !important;
+          padding-bottom: 2px !important;
+          display: flex;
+        }
+
+        .mat-mdc-form-field-infix {
+          min-height: 13px !important;
+        }
+        .mat-form-field-infix {
+          border: 0;
+          height: 15px;
+        }
+      }
+    }
   }
 }

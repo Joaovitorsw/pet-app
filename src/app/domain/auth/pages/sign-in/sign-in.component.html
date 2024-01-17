@@ -1,14 +1,18 @@
 <form [formGroup]="formGroup">
   <div class="text">
-    <h1>Sign in</h1>
-    <span> Welcome back! Please login to your account. </span>
+    <h1>Entrar</h1>
+    <span> Bem vindo de volta! Por favor faça login na sua conta. </span>
   </div>
   <mat-form-field appearance="outline" floatLabel="always">
-    <mat-label>Username</mat-label>
-    <input formControlName="username" placeholder="Type username" matInput />
+    <mat-label>Nome de usuário</mat-label>
+    <input
+      formControlName="username"
+      placeholder="Digite seu nome de usuário"
+      matInput
+    />
   </mat-form-field>
   <mat-form-field appearance="outline" floatLabel="always">
-    <mat-label>Password</mat-label>
+    <mat-label>Senha</mat-label>
     <mat-icon
       (click)="
         passwordField.type =
@@ -23,14 +27,15 @@
       formControlName="password"
       type="password"
       #passwordField
-      placeholder="Type password"
+      placeholder="Digite sua senha"
       matInput
     />
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onSubmit()">
-    Sing In
-  </button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Entrar</button>
   <span class="sing-up">
-    <span>New to Pet App ? <a [routerLink]="['/sign-up']"> Join now</a></span>
+    <span
+      >Novo no aplicativo Pet?
+      <a [routerLink]="['/sign-up']"> inscrever-se </a>!</span
+    >
   </span>
 </form>

@@ -24,9 +24,10 @@
     .mat-icon {
       padding: 2px;
       background-color: white;
-      border: 2px solid currentColor;
+      border: 1px solid currentColor;
       border-radius: 50%;
       cursor: pointer;
+      transform: scale(0.8);
     }
   }
   mat-icon[routerLinkActive] {

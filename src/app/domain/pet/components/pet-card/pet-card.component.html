@@ -3,17 +3,15 @@
     <mat-card-title-group>
       <mat-card-title>{{ pet.id }} - {{ pet.name }}</mat-card-title>
       <mat-card-subtitle
-        ><b>
-          {{ pet.owner.username }}
-        </b>
-        is the owner.</mat-card-subtitle
-      >
+        ><b> {{ pet.owner.id }} - {{ pet.owner.username }} </b>
+        é o dono
+      </mat-card-subtitle>
       <div class="button-group">
-        <button mat-stroked-button (click)="edit()">
-          <mat-icon>edit</mat-icon>Edit
+        <button mat-stroked-button color="primary" (click)="edit()">
+          <mat-icon>edit</mat-icon>Editar
         </button>
-        <button mat-stroked-button (click)="remove()">
-          <mat-icon>delete</mat-icon>Delete
+        <button mat-stroked-button color="warn" (click)="remove()">
+          <mat-icon>delete</mat-icon>Excluir
         </button>
       </div>
     </mat-card-title-group>
@@ -25,9 +23,21 @@
     />
   </mat-card-header>
   <mat-card-content>
-    <p>{{ pet.birthDate | age }} years old</p>
-    <p>{{ pet.birthDate | date : "dd/MM/yyyy" }} birth date</p>
-    <p>{{ pet.createdAt | date : "dd/MM/yyyy HH:mm" }} created</p>
-    <p>{{ pet.updatedAt | date : "dd/MM/yyyy HH:mm" }} updated</p>
+    <div class="pet-info">
+      <span>Tempo de vida :</span>
+      <p>{{ pet.birthDate | age }}</p>
+    </div>
+    <div class="pet-info">
+      <span>Data de nascimento :</span>
+      <p>{{ pet.birthDate | date : "dd/MM/yyyy" }}</p>
+    </div>
+    <div class="pet-info">
+      <span>Data de criação :</span>
+      <p>{{ pet.createdAt | date : "dd/MM/yyyy HH:mm" }}</p>
+    </div>
+    <div class="pet-info">
+      <span>Data de atualização :</span>
+      <p>{{ pet.updatedAt | date : "dd/MM/yyyy HH:mm" }}</p>
+    </div>
   </mat-card-content>
 </mat-card>
