@@ -28,13 +28,7 @@ import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { EMPTY, Observable, of } from 'rxjs';
-import {
-  distinctUntilKeyChanged,
-  share,
-  startWith,
-  switchMap,
-  tap,
-} from 'rxjs/operators';
+import { share, startWith, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'search-chip',
@@ -82,19 +76,18 @@ export class SearchChipComponent
   constructor(@SkipSelf() private form: FormGroupDirective) {}
 
   ngAfterViewInit(): void {
-    this.form.valueChanges
-      ?.pipe(distinctUntilKeyChanged(this.formControlName))
-      ?.subscribe((value) => {
-        this.search$ = this.options.getFn(this.itemsControl.value ?? '').pipe(
-          tap((items) => {
-            this.allItems = items ?? [];
-          }),
-          switchMap((items) => {
-            return of(items.filter((item) => !this.items.includes(item)));
-          }),
-          share()
-        );
-      });
+    this.form.valueChanges?.subscribe((value) => {
+      this.search$ = this.options.getFn(this.itemsControl.value ?? '').pipe(
+        tap((items) => {
+          this.allItems = items ?? [];
+          this.items = this.items.filter((item) => items.includes(item));
+        }),
+        switchMap((items) => {
+          return of(items.filter((item) => !this.items.includes(item)));
+        }),
+        share()
+      );
+    });
     this.itemsControl.valueChanges
       .pipe(startWith(this.itemsControl.value))
       .subscribe((value) => {

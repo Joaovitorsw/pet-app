@@ -150,7 +150,9 @@ export class SearchPetFormComponent implements OnInit, AfterViewInit {
             ...this.formGroup.value,
             ...(this.formGroup.value.owner?.length > 0
               ? { owner: this.formGroup.value.owner }
-              : {}),
+              : {
+                  owner: null,
+                }),
             [field]: `LIKE=${search}`,
           })
           .pipe(
