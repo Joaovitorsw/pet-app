@@ -5,7 +5,8 @@
 /tmp
 /out-tsc
 /bazel-out
-
+.vscode
+.angulardoc.json
 # Node
 /node_modules
 npm-debug.log

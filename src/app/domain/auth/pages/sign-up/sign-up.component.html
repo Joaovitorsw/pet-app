@@ -1,0 +1,52 @@
+<form [formGroup]="formGroup">
+  <div class="text">
+    <h1>Sign up</h1>
+    <span>Welcome to Pet App! Please register to your account. </span>
+  </div>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Username</mat-label>
+    <input formControlName="username" placeholder="Type pet name" matInput />
+  </mat-form-field>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Email</mat-label>
+    <input formControlName="email" placeholder="Type pet name" matInput />
+  </mat-form-field>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Choose a role</mat-label>
+    <mat-select formControlName="role" placeholder="Select a option">
+      @for (role of roles(); track role.id) {
+      <mat-option [value]="+role.id">
+        {{ role.name }}
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Password</mat-label>
+    <mat-icon
+      (click)="
+        passwordField.type =
+          passwordField.type === 'password' ? 'text' : 'password'
+      "
+      matSuffix
+      >{{
+        passwordField.type === "password" ? "visibility_off" : "visibility"
+      }}</mat-icon
+    >
+    <input
+      formControlName="password"
+      type="password"
+      #passwordField
+      placeholder="Type pet name"
+      matInput
+    />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onSubmit()">
+    Sing Up
+  </button>
+  <span class="sing-up">
+    <span
+      >Already have an account? <a [routerLink]="['/sign-in']"> Sign in</a>
+    </span>
+  </span>
+</form>

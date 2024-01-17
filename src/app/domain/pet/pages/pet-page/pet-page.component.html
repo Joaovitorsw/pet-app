@@ -1,0 +1,115 @@
+<main #main>
+  <mat-accordion [class.hidden]="!(petService.search$$ | async)">
+    <mat-expansion-panel #formPanel [expanded]="step() === eStep.PetForm">
+      <mat-expansion-panel-header>
+        <mat-panel-title> <mat-icon>pets</mat-icon> Pet </mat-panel-title>
+        <mat-panel-description>
+          Create or update your pet information's
+        </mat-panel-description> </mat-expansion-panel-header
+      ><mat-divider></mat-divider>
+      <app-pet-form
+        [step]="step"
+        [pets]="pets"
+        [owners]="owners"
+        [matExpansionPanel]="matExpansionPanel"
+      ></app-pet-form>
+      <mat-action-row>
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="petForm.resetPetForm()"
+        >
+          Clear <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-stroked-button color="primary" (click)="formPanel.close()">
+          Close <mat-icon>close</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" (click)="petForm.onSubmit()">
+          Save <mat-icon>save</mat-icon>
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+    <mat-expansion-panel #searchPanel [expanded]="step() === eStep.PetList">
+      <mat-expansion-panel-header>
+        <mat-panel-title> <mat-icon>search</mat-icon> Search</mat-panel-title>
+        <mat-panel-description>
+          Search a pet for information's
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      @defer (when searchPanel.expanded) {
+      <app-search-pet-form [owners]="owners"></app-search-pet-form>
+      <mat-action-row>
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="searchPetForm.formGroup.reset()"
+        >
+          Clear <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="searchPanel.close()"
+        >
+          Close <mat-icon>close</mat-icon>
+        </button>
+
+        <button mat-raised-button color="primary" (click)="searchData()">
+          Find <mat-icon>search</mat-icon>
+        </button>
+      </mat-action-row>
+      }
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      class="mat-expansion-panel-no-padding"
+      [expanded]="false"
+      [disabled]="true"
+    >
+      <mat-expansion-panel-header>
+        <mat-paginator
+          (page)="onPageChange($event)"
+          [length]="response?.total"
+          [pageSize]="paginationOptions.size"
+          [pageSizeOptions]="[10, 15, 25, 50, 100]"
+        >
+        </mat-paginator>
+        <div class="sort">
+          <mat-form-field
+            class="mat-form-field-sort"
+            appearance="outline"
+            floatLabel="always"
+          >
+            <mat-label>Sort by</mat-label>
+            <mat-select [formControl]="sort" placeholder="Select a option">
+              @for (option of sortOptions; track option) {
+              <mat-option [value]="option">
+                {{ option }}
+              </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field
+            class="mat-form-field-sort"
+            appearance="outline"
+            floatLabel="always"
+          >
+            <mat-label> Direction</mat-label>
+            <mat-select [formControl]="direction" placeholder="Select a option">
+              <mat-option value="asc">ASC</mat-option>
+              <mat-option value="desc">DESC</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <section class="pet-container" [@listAnimation]="pets().length">
+    @for (pet of pets() ; track pet) {
+    <app-pet-card
+      [pet]="pet"
+      (editPet)="petForm.editPet($event)"
+      (removePet)="petForm.removePet($event)"
+    ></app-pet-card>
+    }
+  </section>
+</main>

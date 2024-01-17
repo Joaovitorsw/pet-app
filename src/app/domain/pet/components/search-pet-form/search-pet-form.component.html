@@ -1,0 +1,114 @@
+<form class="search-form-container" [formGroup]="formGroup">
+  <search-chip
+    placeholder="Select a ids"
+    formControlName="id"
+    label="ID"
+    [options]="optionsID"
+  />
+  <search-chip
+    placeholder="Select a names"
+    formControlName="name"
+    label="Name"
+    [options]="optionsName"
+  />
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Owner</mat-label>
+    <mat-select formControlName="owner" multiple placeholder="Select a options">
+      @for (owner of owners(); track owner.id) {
+      <mat-option [value]="+owner.id">
+        {{ owner.username }}
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Birth date</mat-label>
+    <mat-date-range-input
+      (click)="
+        birthDatePicker.open(); currentPicker = 'birthDate'; getCalendarData()
+      "
+      [max]="dateNow"
+      [rangePicker]="birthDatePicker"
+    >
+      <input
+        matStartDate
+        formControlName="birthDate"
+        placeholder="Start date"
+      />
+      <input matEndDate formControlName="birthDate" placeholder="End date" />
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-icon matDatepickerToggleIcon (click)="resetFormControl('birthDate')"
+      >clear</mat-icon
+    >
+    <mat-datepicker-toggle
+      matIconSuffix
+      (click)="currentPicker = 'birthDate'; getCalendarData()"
+      [for]="birthDatePicker"
+    ></mat-datepicker-toggle>
+    <mat-date-range-picker
+      [dateClass]="dateClass.bind(this)"
+      #birthDatePicker
+    ></mat-date-range-picker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Created At</mat-label>
+    <mat-date-range-input
+      (click)="
+        createdAtPicker.open(); currentPicker = 'createdAt'; getCalendarData()
+      "
+      [max]="dateNow"
+      [rangePicker]="createdAtPicker"
+    >
+      <input
+        matStartDate
+        formControlName="createdAt"
+        placeholder="Start date"
+      />
+      <input matEndDate formControlName="createdAt" placeholder="End date" />
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-icon matDatepickerToggleIcon (click)="resetFormControl('createdAt')"
+      >clear</mat-icon
+    >
+    <mat-datepicker-toggle
+      (click)="currentPicker = 'createdAt'; getCalendarData()"
+      matIconSuffix
+      [for]="createdAtPicker"
+    ></mat-datepicker-toggle>
+    <mat-date-range-picker
+      [dateClass]="dateClass.bind(this)"
+      #createdAtPicker
+    ></mat-date-range-picker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Updated At</mat-label>
+    <mat-date-range-input
+      (click)="
+        updatedAtPicker.open(); currentPicker = 'updatedAt'; getCalendarData()
+      "
+      [max]="dateNow"
+      [rangePicker]="updatedAtPicker"
+    >
+      <input
+        matStartDate
+        formControlName="updatedAt"
+        placeholder="Start date"
+      />
+      <input matEndDate formControlName="updatedAt" placeholder="End date" />
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-icon matDatepickerToggleIcon (click)="resetFormControl('updatedAt')"
+      >clear</mat-icon
+    >
+    <mat-datepicker-toggle
+      matIconSuffix
+      (click)="currentPicker = 'updatedAt'; getCalendarData()"
+      [for]="updatedAtPicker"
+    ></mat-datepicker-toggle>
+    <mat-date-range-picker
+      [dateClass]="dateClass.bind(this)"
+      #updatedAtPicker
+    ></mat-date-range-picker>
+  </mat-form-field>
+</form>

@@ -1,0 +1,91 @@
+<div content>
+  <div class="image-container" [@fadeAnimation] (click)="openImageCropper()">
+    @if (croppedImage) {
+    <img [src]="croppedImage" class="pet-image" alt="image cropped" />
+    } @else {
+    <mat-spinner class="pet-image"></mat-spinner>
+    }
+  </div>
+  <form class="pet-form" [formGroup]="formGroup">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" placeholder="Type pet name" matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Choose a owner</mat-label>
+      <mat-select formControlName="owner" placeholder="Select a option">
+        @for (owner of owners(); track owner.id) {
+        <mat-option [value]="+owner.id">
+          {{ owner.username }}
+        </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Photo</mat-label>
+      <ngx-mat-file-input
+        #fileInput
+        [valuePlaceholder]="file?.name ?? 'No file selected'"
+        placeholder="Choose file"
+        formControlName="photoUrl"
+        (change)="fileChangeEvent($event)"
+      ></ngx-mat-file-input>
+    </mat-form-field>
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Birth Date</mat-label>
+      <input
+        matInput
+        placeholder="Choose a date"
+        formControlName="birthDate"
+        [max]="dateNow"
+        [matDatepicker]="picker"
+        (click)="picker.open()"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</div>
+<ng-template #cropContainer>
+  <div mat-dialog-content>
+    <image-cropper
+      [resizeToWidth]="350"
+      [resizeToHeight]="250"
+      format="png"
+      [imageChangedEvent]="imageChangedEvent"
+      [imageBase64]="imageBase64"
+      (imageCropped)="imageCropped($event)"
+    ></image-cropper>
+  </div>
+
+  @if (size) {
+  <span
+    class="size"
+    [class.text-danger]="isInvalideFileLength"
+    [class.text-success]="!isInvalideFileLength"
+  >
+    Max size:
+    {{ size }}{{ size | fileSize }}/
+    <span [class.bold]="isInvalideFileLength"
+      >{{ maxSize }} {{ maxSize | fileSize }}</span
+    >
+  </span>
+  }
+
+  <div mat-dialog-actions>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="isInvalideFileLength"
+      mat-dialog-close
+      (click)="saveImage()"
+    >
+      Save <mat-icon>save</mat-icon>
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,36 @@
+<form [formGroup]="formGroup">
+  <div class="text">
+    <h1>Sign in</h1>
+    <span> Welcome back! Please login to your account. </span>
+  </div>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Username</mat-label>
+    <input formControlName="username" placeholder="Type username" matInput />
+  </mat-form-field>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Password</mat-label>
+    <mat-icon
+      (click)="
+        passwordField.type =
+          passwordField.type === 'password' ? 'text' : 'password'
+      "
+      matSuffix
+      >{{
+        passwordField.type === "password" ? "visibility_off" : "visibility"
+      }}</mat-icon
+    >
+    <input
+      formControlName="password"
+      type="password"
+      #passwordField
+      placeholder="Type password"
+      matInput
+    />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onSubmit()">
+    Sing In
+  </button>
+  <span class="sing-up">
+    <span>New to Pet App ? <a [routerLink]="['/sign-up']"> Join now</a></span>
+  </span>
+</form>

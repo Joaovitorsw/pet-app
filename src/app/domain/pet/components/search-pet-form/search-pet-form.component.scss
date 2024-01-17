@@ -1,0 +1,34 @@
+:host {
+  mat-form-field,
+  form {
+    width: 100%;
+  }
+  mat-icon[matDatepickerToggleIcon] {
+    position: absolute;
+    right: 0px;
+    top: 16px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.54);
+    &:hover {
+      color: red;
+    }
+  }
+  search-chip,
+  mat-form-field {
+    margin-bottom: 12px;
+  }
+
+  .search-form-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+
+    @media screen and (max-width: 600px) {
+      display: flex;
+      flex-wrap: wrap;
+      overflow-y: auto;
+      max-height: 335px;
+      padding-top: 10px;
+    }
+    gap: 10px;
+  }
+}

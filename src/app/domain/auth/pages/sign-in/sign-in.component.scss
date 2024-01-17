@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  form {
+    background-color: white;
+    display: flex;
+    padding: 24px;
+    gap: 24px;
+    flex-direction: column;
+    box-shadow: 0px 0px 6px -3px;
+    border-radius: 15px;
+    min-width: 350px;
+    min-height: 250px;
+  }
+  .sing-up {
+    align-self: center;
+  }
+}

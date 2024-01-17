@@ -1,0 +1,52 @@
+:host {
+  display: block;
+  height: 100%;
+  &.has-search {
+    padding-top: 280px;
+  }
+  transition: padding-top 0.5s ease-out;
+
+  mat-accordion {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    z-index: 2;
+    padding: 8px;
+    background: #ffffff9e;
+    border-radius: 5px;
+    width: calc(100% - 16px);
+  }
+  .hidden {
+    display: none;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+  .pet-container {
+    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+  }
+
+  .sort {
+    display: flex;
+    @media screen and (max-width: 400px) {
+      flex-direction: column;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    mat-form-field:nth-child(1) {
+      max-width: 220px;
+    }
+    mat-form-field:nth-child(2) {
+      max-width: 120px;
+    }
+    gap: 20px;
+  }
+  mat-expansion-panel-header {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: 100%;
+  }
+}

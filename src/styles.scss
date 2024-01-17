@@ -1,1 +1,169 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  background: #f1f1f1;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #cdcdcd;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.snackbar-success {
+  --mdc-snackbar-container-color: #2f8928;
+}
+.snackbar-error {
+  --mdc-snackbar-container-color: #731a12;
+}
+.text-danger {
+  color: red;
+}
+.text-success {
+  color: green;
+}
+image-cropper {
+  width: 95%;
+  min-width: 350px;
+  height: 250px;
+}
+.size {
+  margin-left: 10px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-from-right {
+  from {
+    transform: translateX(30px);
+  }
+}
+
+@keyframes slide-to-left {
+  to {
+    transform: translateX(-30px);
+  }
+}
+.mat-expansion-panel-no-padding {
+  .mat-content {
+    display: grid;
+    grid-template-columns: 1fr minmax(150px, 260px);
+
+    @media screen and (max-width: 600px) {
+      display: flex;
+      flex-direction: column;
+    }
+    align-items: center;
+  }
+  .mat-form-field-sort {
+    height: 25px;
+    .mat-mdc-text-field-wrapper {
+      min-height: 36px;
+    }
+    .mdc-text-field--no-label:not(.mdc-text-field--textarea)
+      .mat-mdc-form-field-input-control.mdc-text-field__input,
+    .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+      min-height: 36px;
+    }
+    .mat-mdc-text-field-wrapper.mdc-text-field--outlined
+      .mat-mdc-form-field-infix {
+      padding-top: 6px !important;
+      padding-bottom: 0px !important;
+      display: flex;
+    }
+
+    .mat-mdc-form-field-infix {
+      min-height: 13px !important;
+    }
+    .mat-form-field-infix {
+      border: 0;
+      height: 36px;
+    }
+  }
+  .mat-mdc-paginator-page-size {
+    .mat-mdc-text-field-wrapper {
+      min-height: 15px;
+    }
+    .mdc-text-field--no-label:not(.mdc-text-field--textarea)
+      .mat-mdc-form-field-input-control.mdc-text-field__input,
+    .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+      min-height: 15px;
+    }
+    .mat-mdc-text-field-wrapper.mdc-text-field--outlined
+      .mat-mdc-form-field-infix {
+      padding-top: 2px !important;
+      padding-bottom: 2px !important;
+      display: flex;
+    }
+
+    .mat-mdc-form-field-infix {
+      min-height: 13px !important;
+    }
+    .mat-form-field-infix {
+      border: 0;
+      height: 15px;
+    }
+  }
+}
+.mat-calendar-body-cell-container {
+  max-width: 32px;
+  max-height: 32px;
+}
+.custom-date-class {
+  position: relative;
+  .mat-calendar-body-selected {
+    background-color: transparent;
+  }
+  .mat-calendar-body-cell-content,
+  .mat-calendar-body-selected {
+    transition: color 0.5s ease-in-out !important;
+    color: white !important;
+    font-weight: 600;
+    &::after {
+      transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+      content: "";
+      position: absolute;
+      z-index: -2;
+      top: -1px;
+      left: -1px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      transform: scale(0.9);
+      background: var(--color);
+    }
+  }
+}
+::view-transition-old(router-outlet) {
+  animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(router-outlet) {
+  animation: 210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+router-outlet + * {
+  padding: 0 10px;
+  padding-top: 85px;
+}

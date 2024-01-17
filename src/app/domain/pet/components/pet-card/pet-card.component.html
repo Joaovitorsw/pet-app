@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{ pet.id }} - {{ pet.name }}</mat-card-title>
+      <mat-card-subtitle
+        ><b>
+          {{ pet.owner.username }}
+        </b>
+        is the owner.</mat-card-subtitle
+      >
+      <div class="button-group">
+        <button mat-stroked-button (click)="edit()">
+          <mat-icon>edit</mat-icon>Edit
+        </button>
+        <button mat-stroked-button (click)="remove()">
+          <mat-icon>delete</mat-icon>Delete
+        </button>
+      </div>
+    </mat-card-title-group>
+    <img
+      [src]="getPetImageUrl(pet.photoUrl)"
+      [width]="400"
+      [height]="240"
+      [alt]="'Image of a ' + pet.name"
+    />
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ pet.birthDate | age }} years old</p>
+    <p>{{ pet.birthDate | date : "dd/MM/yyyy" }} birth date</p>
+    <p>{{ pet.createdAt | date : "dd/MM/yyyy HH:mm" }} created</p>
+    <p>{{ pet.updatedAt | date : "dd/MM/yyyy HH:mm" }} updated</p>
+  </mat-card-content>
+</mat-card>
