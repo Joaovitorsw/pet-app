@@ -30,8 +30,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src"]
-            },
-            "scripts": ["./node_modules/sweetalert2/dist/sweetalert2.all.js"]
+            }
           },
           "configurations": {
             "production": {
@@ -96,8 +95,7 @@
 
             "stylePreprocessorOptions": {
               "includePaths": ["src"]
-            },
-            "scripts": ["./node_modules/sweetalert2/dist/sweetalert2.all.js"]
+            }
           }
         }
       }

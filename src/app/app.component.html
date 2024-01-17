@@ -43,3 +43,6 @@
 </mat-toolbar>
 
 <router-outlet></router-outlet>
+<div [class.hidden]="!(loader.isLoading$ | async)" class="spinner-overlay">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
