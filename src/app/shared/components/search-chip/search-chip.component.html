@@ -23,13 +23,9 @@
     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
     (matChipInputTokenEnd)="add($event)"
   />
-  <mat-autocomplete
-    #auto="matAutocomplete"
-    [autoActiveFirstOption]="true"
-    (optionSelected)="selected($event)"
-  >
-    @if (filteredItems | async; as filteredItems) { @for (item of filteredItems
-    ; track item) {
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    @if ( filteredItems | async; as filteredItems ) { @for (item of
+    filteredItems ; track item) {
     <mat-option [value]="item">{{ item }}</mat-option>
     } }
   </mat-autocomplete>

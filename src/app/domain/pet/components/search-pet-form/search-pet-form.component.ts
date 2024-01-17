@@ -38,10 +38,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {
   Subject,
-  debounceTime,
   distinctUntilChanged,
   map,
+  share,
   switchMap,
+  throttleTime,
 } from 'rxjs';
 import { SearchChipComponent } from '../../../../shared/components/search-chip/search-chip.component';
 import { NotificationService } from '../../../../shared/services/notification/notification.service';
@@ -109,7 +110,7 @@ export class SearchPetFormComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.calendarResponse$
       .pipe(
-        debounceTime(500),
+        throttleTime(2500),
         distinctUntilChanged((a, b) => {
           return (
             a.field === b.field && a.year === b.year && a.month === b.month
@@ -147,14 +148,14 @@ export class SearchPetFormComponent implements OnInit, AfterViewInit {
         this.petService
           .searchPets({
             ...this.formGroup.value,
-            owner:
-              this.formGroup.value.owner?.length > 0
-                ? this.formGroup.value.owner
-                : null,
+            ...(this.formGroup.value.owner?.length > 0
+              ? { owner: this.formGroup.value.owner }
+              : {}),
             [field]: `LIKE=${search}`,
           })
           .pipe(
-            map((pets) => pets.data.items.map((pet) => pet[field]?.toString()))
+            map((pets) => pets.data.items.map((pet) => pet[field]?.toString())),
+            share()
           ),
     };
   }
@@ -204,11 +205,11 @@ export class SearchPetFormComponent implements OnInit, AfterViewInit {
     let red, green;
     const blue = 0;
     if (percentual < 50) {
-      red = 255;
-      green = Math.round(5.1 * percentual);
-    } else {
-      green = 155;
+      green = 255;
       red = Math.round(5.1 * percentual);
+    } else {
+      red = 155;
+      green = Math.round(5.1 * percentual);
     }
     const hexadecimal = red * 0x10000 + green * 0x100 + blue * 0x1;
     return `#${('000000' + hexadecimal.toString(16)).slice(-6)}`;
