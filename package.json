@@ -20,7 +20,6 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
-    "@sweetalert2/theme-material-ui": "^5.0.16",
     "date-fns": "^3.0.6",
     "ngx-custom-material-file-input": "^4.0.0",
     "ngx-image-cropper": "^7.1.2",
