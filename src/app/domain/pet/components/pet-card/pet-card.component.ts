@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { environment } from '../../../../../environments/environment';
+import { IfHasRoleDirective } from '../../../../shared/directives/if-has-role/if-has-role.directive';
 import { Pet } from '../../interfaces/pet';
 import { AgePipe } from '../../pipes/age/age.pipe';
 
@@ -16,6 +17,7 @@ import { AgePipe } from '../../pipes/age/age.pipe';
     AgePipe,
     MatButtonModule,
     CommonModule,
+    IfHasRoleDirective,
   ],
   templateUrl: './pet-card.component.html',
   styleUrl: './pet-card.component.scss',

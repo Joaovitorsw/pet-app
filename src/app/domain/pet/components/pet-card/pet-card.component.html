@@ -19,10 +19,15 @@
         </div>
       </mat-card-subtitle>
       <div class="button-group">
-        <button mat-stroked-button color="primary" (click)="edit()">
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="edit()"
+          *ngIfHasRole
+        >
           <mat-icon>edit</mat-icon>Editar
         </button>
-        <button mat-stroked-button color="warn" (click)="remove()">
+        <button mat-stroked-button color="warn" (click)="remove()" *ngIfHasRole>
           <mat-icon>delete</mat-icon>Excluir
         </button>
       </div>

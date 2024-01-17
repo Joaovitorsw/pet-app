@@ -27,7 +27,7 @@ import {
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { Observable, of } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import { share, startWith, switchMap, tap } from 'rxjs/operators';
 
 @Component({
@@ -91,12 +91,10 @@ export class SearchChipComponent
       .subscribe((value) => {
         if (this.onChange) this.onChange(this.items.join(','));
       });
-
-    this.changeDetectorRef.detectChanges();
   }
 
   get filteredItems() {
-    return this.search$;
+    return this.search$ ?? EMPTY;
   }
 
   writeValue(obj: any): void {

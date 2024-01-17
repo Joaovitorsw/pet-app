@@ -28,8 +28,9 @@
     [autoActiveFirstOption]="true"
     (optionSelected)="selected($event)"
   >
-    @for (item of filteredItems | async; track item) {
+    @if (filteredItems | async; as filteredItems) { @for (item of filteredItems
+    ; track item) {
     <mat-option [value]="item">{{ item }}</mat-option>
-    }
+    } }
   </mat-autocomplete>
 </mat-form-field>

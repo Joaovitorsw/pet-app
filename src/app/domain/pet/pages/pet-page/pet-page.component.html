@@ -1,6 +1,10 @@
 <main #main>
   <mat-accordion [class.hidden]="!(petService.search$$ | async)">
-    <mat-expansion-panel #formPanel [expanded]="step() === eStep.PetForm">
+    <mat-expansion-panel
+      #formPanel
+      [expanded]="step() === eStep.PetForm"
+      *ngIfHasRole
+    >
       <mat-expansion-panel-header class="pet-header">
         <mat-panel-title>
           <mat-icon>pets</mat-icon>

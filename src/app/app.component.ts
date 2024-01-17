@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  inject,
+} from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
@@ -23,15 +28,22 @@ import { LoaderService } from './shared/services/loader/loader.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'pet-app';
   petService = inject(PetService);
   activatedRoute = inject(ActivatedRoute);
   router = inject(Router);
   authService = inject(AuthService);
   loader = inject(LoaderService);
+  private changeDetectorRef = inject(ChangeDetectorRef);
 
   get isPetPage() {
     return this.router.url === '/home/pets';
+  }
+
+  ngAfterViewInit(): void {
+    this.loader.isLoading$.subscribe((isLoading) => {
+      this.changeDetectorRef.detectChanges();
+    });
   }
 }

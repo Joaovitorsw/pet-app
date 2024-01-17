@@ -32,6 +32,7 @@ import { combineLatest, startWith } from 'rxjs';
 import { IN_OUT_ANIMATION } from '../../../../shared/animations/in-out-animation';
 import { LIST_ANIMATION } from '../../../../shared/animations/list-animation';
 import { SearchChipComponent } from '../../../../shared/components/search-chip/search-chip.component';
+import { IfHasRoleDirective } from '../../../../shared/directives/if-has-role/if-has-role.directive';
 import { NotificationService } from '../../../../shared/services/notification/notification.service';
 import { StorageService } from '../../../../shared/services/storage/storage.service';
 import { PetCardComponent } from '../../components/pet-card/pet-card.component';
@@ -66,6 +67,7 @@ import { PetService } from '../../services/pet/pet.service';
     FormsModule,
     MatSelectModule,
     PetCardComponent,
+    IfHasRoleDirective,
   ],
   animations: [IN_OUT_ANIMATION, LIST_ANIMATION],
   templateUrl: './pet-page.component.html',

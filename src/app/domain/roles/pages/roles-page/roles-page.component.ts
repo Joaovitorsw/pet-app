@@ -30,6 +30,8 @@ import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { EMPTY, Subject, switchMap } from 'rxjs';
 import Swal from 'sweetalert2';
+import { IfHasRoleDirective } from '../../../../shared/directives/if-has-role/if-has-role.directive';
+import { AuthService } from '../../../auth/services/auth/auth.service';
 import {
   ApiResponse,
   PaginationResponse,
@@ -52,6 +54,7 @@ import { RolesService } from '../../services/roles.service';
     FormsModule,
     MatDialogModule,
     MatSortModule,
+    IfHasRoleDirective,
   ],
   templateUrl: './roles-page.component.html',
   styleUrl: './roles-page.component.scss',
@@ -60,6 +63,7 @@ export class RolesPageComponent implements AfterViewInit {
   displayedColumns: (keyof Role | 'actions')[] = ['id', 'name', 'actions'];
   dataSource = new MatTableDataSource<Role>([]);
   injector = inject(EnvironmentInjector);
+  authService = inject(AuthService);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -105,6 +109,11 @@ export class RolesPageComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    if (!this.authService.validRole()) {
+      this.displayedColumns = this.displayedColumns.filter(
+        (column) => column !== 'actions'
+      );
+    }
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.getData();

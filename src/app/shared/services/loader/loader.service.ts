@@ -10,10 +10,8 @@ export class LoaderService {
   isLoading$ = this.isLoadingSubject.asObservable();
 
   showLoader() {
-    if (this.apiCount === 0) {
-      this.isLoadingSubject.next(true);
-    }
     this.apiCount++;
+    this.isLoadingSubject.next(true);
   }
 
   hideLoader() {
@@ -21,7 +19,7 @@ export class LoaderService {
     if (this.apiCount === 0) {
       setTimeout(() => {
         this.isLoadingSubject.next(false);
-      }, 750);
+      }, 250);
     }
   }
 }
