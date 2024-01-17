@@ -31,7 +31,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { MaterialFileInputModule } from 'ngx-custom-material-file-input';
 import { ImageCroppedEvent, ImageCropperModule } from 'ngx-image-cropper';
 import { Observable } from 'rxjs';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { FADE_ANIMATION } from '../../../../shared/animations/fade';
 import { NotificationService } from '../../../../shared/services/notification/notification.service';
 import { BINARY_MULTIPLES } from '../../constants/binary';
@@ -235,12 +235,18 @@ export class PetFormComponent implements OnInit {
 
   removePet(pet: Pet) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You will not be able to recover this pet!',
-      icon: 'warning',
+      title: 'Tem certeza?',
+      text: 'Você não será capaz de recuperar este animal de estimação!',
+      icon: 'question',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, keep it',
+      confirmButtonText: 'Sim, exclua-o!',
+      customClass: {
+        confirmButton:
+          'mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base',
+        cancelButton:
+          'mdc-button mdc-button--outlined mat-mdc-outlined-button mat-warn mat-mdc-button-base',
+      },
+      cancelButtonText: 'Não, mantenha-o',
     }).then((result) => {
       if (result.isConfirmed) {
         this.petService.removePet(pet).subscribe({

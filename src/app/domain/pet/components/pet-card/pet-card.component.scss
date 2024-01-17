@@ -2,9 +2,10 @@
   .pet-info {
     display: inline-flex;
     align-items: center;
-
-    margin-top: 1em;
+    margin: 0;
+    margin-top: 0.5em;
     span {
+      margin: 0;
       margin-right: 4px;
       font-weight: 500;
       color: var(--mat-expansion-header-text-color);
@@ -14,12 +15,25 @@
       margin: 0;
     }
   }
+
+  .subtitle {
+    display: flex;
+    max-width: 135px;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  b,
+  span {
+    white-space: nowrap;
+  }
   b {
     color: black;
   }
-  .mat-mdc-card-content {
+  .mat-mdc-card-content,
+  mat-card-subtitle {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
   mat-card-header {
     display: flex;
@@ -33,6 +47,10 @@
     .button-group {
       display: flex;
       gap: 10px;
+      button {
+        width: 100%;
+        max-width: 100px;
+      }
     }
     img {
       width: 100%;

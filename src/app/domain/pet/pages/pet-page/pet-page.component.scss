@@ -1,3 +1,5 @@
+@import "styles";
+
 :host {
   display: block;
   height: 100%;
@@ -77,52 +79,7 @@
       }
       .mat-form-field-sort {
         height: 25px;
-        .mat-mdc-text-field-wrapper {
-          min-height: 36px;
-        }
-        .mdc-text-field--no-label:not(.mdc-text-field--textarea)
-          .mat-mdc-form-field-input-control.mdc-text-field__input,
-        .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
-          min-height: 36px;
-        }
-        .mat-mdc-text-field-wrapper.mdc-text-field--outlined
-          .mat-mdc-form-field-infix {
-          padding-top: 6px !important;
-          padding-bottom: 0px !important;
-          display: flex;
-        }
-
-        .mat-mdc-form-field-infix {
-          min-height: 13px !important;
-        }
-        .mat-form-field-infix {
-          border: 0;
-          height: 36px;
-        }
-      }
-      .mat-mdc-paginator-page-size {
-        .mat-mdc-text-field-wrapper {
-          min-height: 15px;
-        }
-        .mdc-text-field--no-label:not(.mdc-text-field--textarea)
-          .mat-mdc-form-field-input-control.mdc-text-field__input,
-        .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
-          min-height: 15px;
-        }
-        .mat-mdc-text-field-wrapper.mdc-text-field--outlined
-          .mat-mdc-form-field-infix {
-          padding-top: 2px !important;
-          padding-bottom: 2px !important;
-          display: flex;
-        }
-
-        .mat-mdc-form-field-infix {
-          min-height: 13px !important;
-        }
-        .mat-form-field-infix {
-          border: 0;
-          height: 15px;
-        }
+        @include flat-form-field;
       }
     }
   }

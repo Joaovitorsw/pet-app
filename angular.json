@@ -25,10 +25,14 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets", "src/_redirects"],
             "styles": [
+              "./node_modules/@sweetalert2/theme-material-ui/material-ui.scss",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            },
+            "scripts": ["./node_modules/sweetalert2/dist/sweetalert2.all.js"]
           },
           "configurations": {
             "production": {
@@ -87,10 +91,15 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets", "src/_redirects"],
             "styles": [
+              "./node_modules/@sweetalert2/theme-material-ui/material-ui.scss",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": []
+
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            },
+            "scripts": ["./node_modules/sweetalert2/dist/sweetalert2.all.js"]
           }
         }
       }

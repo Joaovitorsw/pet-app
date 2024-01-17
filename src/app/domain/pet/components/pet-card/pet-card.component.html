@@ -2,9 +2,21 @@
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>{{ pet.id }} - {{ pet.name }}</mat-card-title>
-      <mat-card-subtitle
-        ><b> {{ pet.owner.id }} - {{ pet.owner.username }} </b>
-        é o dono
+      <mat-card-subtitle>
+        <div class="subtitle">
+          <div>
+            <b>Dono :</b>
+            <span> {{ pet.owner.id }} - {{ pet.owner.username }} </span>
+          </div>
+          <div>
+            <b>Função :</b>
+            <span> {{ pet.owner.role.name }} </span>
+          </div>
+          <div>
+            <b>Email :</b>
+            <span> {{ pet.owner.email }} </span>
+          </div>
+        </div>
       </mat-card-subtitle>
       <div class="button-group">
         <button mat-stroked-button color="primary" (click)="edit()">
