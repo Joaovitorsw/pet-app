@@ -120,12 +120,12 @@ npm start
 | `joaovitorsw` |
 | `angular` |
 | `typescript` |
-| `rxjs` |
-| `frontend` |
-| `spa` |
+| `angular-material` |
 | `pet-app` |
-| `css` |
-| `html` |
+| `auth` |
+| `roles` |
+| `image-upload` |
+| `frontend` |
 
 </div>
 
