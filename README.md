@@ -34,8 +34,9 @@
 
 <div align="center">
 
-Deploy/preview do projeto disponível em: [Clique Aqui](https://karma-runner.github.io)
+Preview visual do projeto:
 
+<kbd><img src=".github/assets/project-cover.png" alt="Preview do projeto"/></kbd>
 
 </div>
   
@@ -45,7 +46,7 @@ Deploy/preview do projeto disponível em: [Clique Aqui](https://karma-runner.git
 
 <div align="center">
 
-Aplicação Angular criada para praticar arquitetura de componentes, rotas, services, consumo de APIs e organização de interfaces web modernas.
+Aplicação Angular 17 para gerenciamento de pets, com autenticação, controle de perfis, busca, formulário em etapas, upload/crop de imagem e UI baseada em Angular Material.
 
 ---
 
@@ -57,11 +58,12 @@ Aplicação Angular criada para praticar arquitetura de componentes, rotas, serv
 
 | :globe_with_meridians: Stack |
 | :--------------------------: |
-| [TypeScript](https://www.typescriptlang.org/) |
-| [HTML 5](https://www.w3schools.com/html/) |
-| [CSS3](https://www.w3schools.com/css/) |
 | [Angular](https://angular.io/) |
+| [Angular Material](https://material.angular.io/) |
+| [TypeScript](https://www.typescriptlang.org/) |
 | [RxJS](https://rxjs.dev/) |
+| [SweetAlert2](https://sweetalert2.github.io/) |
+| [date-fns](https://date-fns.org/) |
 
 </div>
 
@@ -73,12 +75,13 @@ Aplicação Angular criada para praticar arquitetura de componentes, rotas, serv
 
 |  :page_facing_up:  |
 | :----------------: |
-| Componentizacao |
-| Rotas |
-| Services |
-| RxJS |
-| Formulários |
-| Consumo de API |
+| Rotas protegidas |
+| Controle de permissões |
+| Formulários reativos |
+| Upload e recorte de imagem |
+| Pipes customizados |
+| Animações |
+| Componentização |
 
 </div>
 
@@ -90,7 +93,9 @@ Aplicação Angular criada para praticar arquitetura de componentes, rotas, serv
 
 |                     :page_facing_up:                      |
 | :-------------------------------------------------------: |
-| Organizar informacoes de pets em uma aplicacao web |
+| Cadastrar e consultar pets com filtros e cards visuais |
+| Gerenciar autenticação e permissões por perfil de usuário |
+| Trabalhar upload, preview e recorte de imagens no fluxo de cadastro |
 
 </div>
 
